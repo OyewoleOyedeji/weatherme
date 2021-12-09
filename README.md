@@ -1,24 +1,30 @@
-# weatherme
+# Weatherme
 
 ## Project setup
-```
-npm install
+
+```bash
+# Install dependencies
+$ npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Start the development server
+
+```bash
+# Start development server and open in the browser
+# Paste URL from the clipboard, if the browser launching doesn't work
+$ npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+### Set up production build
+
+```bash
+# Run the production build
+$ npm run build
 ```
 
 ### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```bash
+# Run the linter for vue.js
+$ npm run lint
+```

@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <CurrentStatus />
+  <InvisibleNavigationMenuVue />
+  <CreditsMenu />
+  <VisibleNavigationMenu />
+  <MainVue />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VisibleNavigationMenu from "./components/VisibleNavigationMenu.vue";
+import CurrentStatus from "./components/CurrentStatus.vue";
+import InvisibleNavigationMenuVue from "./components/InvisibleNavigationMenu.vue";
+import CreditsMenu from "./components/CreditsMenu.vue";
+import MainVue from "./components/Main.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: "App",
+    components: { VisibleNavigationMenu, CurrentStatus, InvisibleNavigationMenuVue, CreditsMenu, MainVue },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
