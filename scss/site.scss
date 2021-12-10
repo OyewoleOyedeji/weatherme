@@ -1,0 +1,187 @@
+@import "variables";
+@import "mixins";
+
+/* © Copyright 2021 Oyewole Oyedeji */
+
+/** =========== MAIN SITE STYLING =========== **/
+
+body {
+  font-family: $fontName, sans-serif !important;
+  background: white;
+  background: linear-gradient(135deg, white 0%, skyblue 100%);
+  background-attachment: fixed;
+}
+
+img {
+  user-select: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/** =========== UTILITIES =========== **/
+
+/**== Center all elements with this class ==**/
+.centre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/**== Add extra text to the left-right of the element ==**/
+.caption {
+  &:before {
+    content: "┗|｀O′|┛";
+    margin-right: 1rem;
+  }
+  &:after {
+    content: "...";
+    margin-left: 1rem;
+  }
+}
+
+/**== Generic class for the site buttons ==**/
+.site-buttons {
+  @include button-colors($orange);
+}
+
+/**== Change the background color of highlighted elements ==**/
+::selection {
+  background: rgba(lighten(darken(white, 75%), 40%), 0.7);
+}
+
+/** =========== SECTIONS =========== **/
+// I sorted the styles according to order of hierarchy
+
+/**---- The credits menu for the 2 viewports ----**/
+#credits-menu-desktop {
+  @include credits-menu("large")
+}
+
+#credits-menu-mobile {
+  @include credits-menu("small")
+}
+
+/**---- The main navigation menu ----**/
+#invisible-navigation-menu {
+  &.modal {
+    .modal-dialog {
+      .modal-content {
+        background: $orange;
+        border: $orange;
+        color: white;
+
+        .modal-body {
+          div {
+            &.menu-group {
+              transition: 0.5s;
+
+              button {
+                @include button-colors($orange);
+
+                &:hover {
+                  background: none;
+                }
+              }
+
+              a {
+                i.menu-icons {
+                  font-size: 1.5rem;
+                }
+              }
+              &:hover {
+                background: darken($orange, 10%);
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**---- The visible navigation menu ----**/
+#visible-navigation-menu {
+  .searchbox {
+    border-bottom: 2px solid $orange;
+    z-index: 1;
+
+    i {
+      font-size: 24px;
+      color: $orange;
+    }
+
+    input {
+      background: none;
+      border: none;
+      width: 80%;
+      outline: none;
+      font-size: 1.5rem;
+      letter-spacing: 0.3rem;
+
+      &::placeholder {
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
+      }
+    }
+  }
+
+  #toggle-navigation-menu-mobile {
+    background: none;
+    border: none;
+    outline: none;
+
+    i {
+      font-size: 3rem;
+      color: $orange;
+    }
+  }
+  
+  #toggle-navigation-menu-desktop {
+    background: none;
+    border: none;
+    outline: none;
+
+    i {
+      font-size: 3rem;
+      color: $orange;
+    }
+  }
+}
+
+/**---- Main content ----**/
+#glassmorphism-card {
+  background: rgba(white, 0.6);
+  border-color: rgba(white, 0.6);
+  color: darken(white, 100%);
+  border-radius: 15px !important;
+  backdrop-filter: blur(5px) !important;
+  margin-top: 100px;
+  z-index: 2;
+
+  .card-body {
+    ul {
+      li {
+        button {
+          font-size: 1.2rem;
+
+          &.nav-link {
+            color: $orange;
+            &.active {
+              background: $orange;
+              color: white;
+
+              &:hover {
+                background: lighten($orange, 15%);
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+// Snippet for customizing site colors
+@mixin button-colors($color) {
+  border: 1.5px solid $color;
+  color: #fff;
+  background: $color;
+  transition: 0.5s;
+  font-size: 20px;
+  outline: none;
+
+  &:hover {
+    background: lighten($color, 15%);
+    border: 1.5px solid lighten($color, 15%);
+  }
+}
+
+// Snippet for styling a credit menu
+@mixin credits-menu($viewportSize) {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  background-color: $orange;
+  background: rgba($orange, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 4rem;
+  }
+
+  .centre {
+    h3 {
+      span::after {
+        content: "-";
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  ::selection {
+    background: rgba(darken(white, 75%), 0.6);
+  }
+}
