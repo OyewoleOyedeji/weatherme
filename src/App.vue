@@ -1,6 +1,6 @@
 <template>
   <CurrentStatus />
-  <InvisibleNavigationMenuVue />
+  <InvisibleNavigationMenu />
   <VisibleNavigationMenu />
   <MainVue />
 </template>
@@ -8,7 +8,7 @@
 <script>
 import VisibleNavigationMenu from "./components/VisibleNavigationMenu.vue";
 import CurrentStatus from "./components/CurrentStatus.vue";
-import InvisibleNavigationMenuVue from "./components/InvisibleNavigationMenu.vue";
+import InvisibleNavigationMenu from "./components/InvisibleNavigationMenu.vue";
 import MainVue from "./components/Main.vue";
 
 // Bootstrap Javascript & CSS
@@ -28,7 +28,7 @@ export default {
   components: {
     VisibleNavigationMenu,
     CurrentStatus,
-    InvisibleNavigationMenuVue,
+    InvisibleNavigationMenu,
     MainVue,
   },
   methods: {},
