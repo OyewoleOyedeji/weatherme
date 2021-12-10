@@ -1,7 +1,6 @@
 <template>
   <CurrentStatus />
   <InvisibleNavigationMenuVue />
-  <CreditsMenu />
   <VisibleNavigationMenu />
   <MainVue />
 </template>
@@ -10,23 +9,28 @@
 import VisibleNavigationMenu from "./components/VisibleNavigationMenu.vue";
 import CurrentStatus from "./components/CurrentStatus.vue";
 import InvisibleNavigationMenuVue from "./components/InvisibleNavigationMenu.vue";
-import CreditsMenu from "./components/CreditsMenu.vue";
 import MainVue from "./components/Main.vue";
 
 // Bootstrap Javascript & CSS
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/js/bootstrap.bundle";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // Bootstrap Icons CSS
-import '@/assets/bootstrap-icons/bootstrap-icons.css';
+import "@/assets/bootstrap-icons/bootstrap-icons.css";
 
 // Devicon CSS
-import '@/assets/devicon/devicon-base.css';
+import "@/assets/devicon/devicon-base.css";
 
-import '@/assets/site.css';
+import "@/assets/site.css";
 
 export default {
-    name: "App",
-    components: { VisibleNavigationMenu, CurrentStatus, InvisibleNavigationMenuVue, CreditsMenu, MainVue },
-}
+  name: "App",
+  components: {
+    VisibleNavigationMenu,
+    CurrentStatus,
+    InvisibleNavigationMenuVue,
+    MainVue,
+  },
+  methods: {},
+};
 </script>

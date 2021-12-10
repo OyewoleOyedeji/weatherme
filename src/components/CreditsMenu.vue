@@ -2,7 +2,7 @@
   <section>
     <div id="credits-menu-desktop">
       <!-- Close credits -->
-      <button class="close-button" id="untoggle-navigation-menu-desktop">
+      <button class="close-button" id="untoggle-navigation-menu-desktop" @click="closeCreditsMenu">
         <i class="bi bi-x"></i>
       </button>
 
@@ -15,9 +15,8 @@
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
           <i class="devicon-css3-plain pe-3" title="CSS3"></i>
           <i class="devicon-javascript-plain pe-3" title="Javascript"></i>
-          <i class="devicon-jquery-plain pe-3" title="jQuery and jQuery UI"></i>
-          <i class="devicon-express-original pe-3" title="Express Server"></i>
-          <i class="devicon-bootstrap-plain pe-3" title="Bootstrap"></i>
+          <i class="devicon-vuejs-plain pe-3" title="Vuejs"></i>
+          <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
         </h3>
       </div>
     </div>
@@ -38,9 +37,8 @@
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
           <i class="devicon-css3-plain pe-3" title="CSS3"></i>
           <i class="devicon-javascript-plain pe-3" title="Javascript"></i>
-          <i class="devicon-jquery-plain pe-3" title="jQuery and jQuery UI"></i>
-          <i class="devicon-express-original pe-3" title="Express Server"></i>
-          <i class="devicon-bootstrap-plain pe-3" title="Bootstrap"></i>
+          <i class="devicon-vuejs-plain pe-3" title="Vuejs"></i>
+          <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
         </h3>
       </div>
     </div>
@@ -51,7 +49,30 @@
 export default {
     data() {
         return {
-            author: 'Oyewole Oyedeji'
+            author: 'Oyewole Oyedeji',
+            currentDevice: '',
+        }
+    },
+    methods: {
+      closeCreditsMenu() {
+          const device = this.currentDevice;
+            if (device === "large") {
+                var creditsMenuDesktop = document.getElementById("credits-menu-desktop");
+                creditsMenuDesktop.style.width = "0%";
+            }
+            else {
+                var creditsMenuMobile = document.getElementById("credits-menu-mobile");
+                creditsMenuMobile.style.width = "0%";
+            }
+        }
+    },
+    mounted() {
+        const deviceWidth = window.innerWidth;
+        if (deviceWidth >= 992) {
+            this.currentDevice = "large";
+        }
+        else {
+            this.currentDevice = "small";
         }
     },
 }
