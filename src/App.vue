@@ -13,11 +13,20 @@ import InvisibleNavigationMenuVue from "./components/InvisibleNavigationMenu.vue
 import CreditsMenu from "./components/CreditsMenu.vue";
 import MainVue from "./components/Main.vue";
 
+// Bootstrap Javascript & CSS
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Bootstrap Icons CSS
+import '@/assets/bootstrap-icons/bootstrap-icons.css';
+
+// Devicon CSS
+import '@/assets/devicon/devicon-base.css';
+
+import '@/assets/site.css';
+
 export default {
     name: "App",
     components: { VisibleNavigationMenu, CurrentStatus, InvisibleNavigationMenuVue, CreditsMenu, MainVue },
 }
 </script>
-
-<style>
-</style>

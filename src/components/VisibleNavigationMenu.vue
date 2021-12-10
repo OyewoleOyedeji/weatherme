@@ -74,13 +74,3 @@
     </div>
   </nav>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      date: new Date(),
-    };
-  },
-};
-</script>
