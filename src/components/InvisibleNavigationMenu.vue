@@ -51,14 +51,15 @@
 
 <script>
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+
 export default {
   data() {
     return {
       repositoryURL: "https://github.com/OyewoleOyedeji/weatherme.git",
       surveyURL: "https://mygreatsurveysite.org",
       currentDevice: "",
-      weatherSearchLocationDesktop: "",
-      weatherSearchLocationMobile: "",
+      weatherSearchLocationDesktop: this.$props.query,
+      weatherSearchLocationMobile: this.$props.query,
     };
   },
   methods: {
@@ -96,5 +97,6 @@ export default {
       this.currentDevice = "small";
     }
   },
+  props: ['query']
 };
 </script>

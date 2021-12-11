@@ -31,7 +31,7 @@
         <h1 class="text-center pt-5">Credits</h1>
         <h2 class="text-center">
           Made with ❤ by <br />
-          {{ author }}
+          {{ projectAuthor }}
         </h2>
         <h3 class="pt-3 text-center">
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
@@ -49,11 +49,12 @@
 export default {
     data() {
         return {
-            author: 'Oyewole Oyedeji',
-            currentDevice: '',
+            projectAuthor: this.$props.author,
+            currentDevice: this.$props.device,
         }
     },
     methods: {
+      // Close the credits menu
       closeCreditsMenu() {
           const device = this.currentDevice;
             if (device === "large") {
@@ -66,14 +67,6 @@ export default {
             }
         }
     },
-    mounted() {
-        const deviceWidth = window.innerWidth;
-        if (deviceWidth >= 992) {
-            this.currentDevice = "large";
-        }
-        else {
-            this.currentDevice = "small";
-        }
-    },
+    props: ['device', 'author']
 }
 </script>

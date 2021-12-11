@@ -1,7 +1,7 @@
 <template>
   <CurrentStatus />
   <InvisibleNavigationMenu />
-  <VisibleNavigationMenu />
+  <VisibleNavigationMenu :device="currentDeviceWidth" :author="author" />
   <MainVue />
 </template>
 
@@ -31,6 +31,26 @@ export default {
     InvisibleNavigationMenu,
     MainVue,
   },
-  methods: {},
+  data() {
+    return {
+      currentDeviceWidth: "",
+      author: 'Oyewole Oyedeji',
+      searchQuery: ''
+    };
+  },
+  mounted() {
+    // Determine the type of device
+    const deviceWidth = window.innerWidth;
+    if (deviceWidth >= 992) {
+      this.currentDeviceWidth = "large";
+    } else {
+      this.currentDeviceWidth = "small";
+    }
+  },
+  methods: {
+    onSaveSearchQuery(query) {
+      this.searchQuery = query;
+    }
+  },
 };
 </script>

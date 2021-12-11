@@ -1,5 +1,5 @@
 <template>
-  <CreditsMenu />
+  <CreditsMenu :device="currentDevice" :author="projectAuthor" />
   <nav class="container mt-5 d-md-block d-none" id="visible-navigation-menu">
     <div class="row row-cols-1">
       <!-- First half of the visible navigation menu -->
@@ -35,7 +35,7 @@
               type="button"
               class="site-buttons p-3 rounded-circle"
               title="Click me to find the weather of the entered location"
-              @click="searchWeatherApi"
+              @click="validateData"
             >
               <i class="bi bi-search"></i>
             </button>
@@ -87,38 +87,25 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav>  
 </template>
 
 <script>
 import CreditsMenu from "./CreditsMenu.vue";
+
+var session = window.sessionStorage;
+
 export default {
   data() {
     return {
+      currentDevice: this.$props.device,
+      projectAuthor: this.$props.author,
       weatherSearchLocationDesktop: "",
-      weatherSearchLocationMobile: "",
-      currentDevice: "",
+      weatherSearchLocationMobile: ""
     };
   },
   methods: {
-    searchWeatherApi() {
-      const device = this.currentDevice;
-      if (device === "large") {
-        const searchTerm = this.weatherSearchLocationDesktop;
-        if (searchTerm === "") {
-          alert("Sorry, the location field cannot be empty");
-        } else {
-          console.log(this.weatherSearchLocationDesktop);
-        }
-      } else {
-        const searchTerm = this.weatherSearchLocationMobile;
-        if (searchTerm === "") {
-          alert("Sorry, the location field cannot be empty");
-        } else {
-          console.log(this.weatherSearchLocationMobile);
-        }
-      }
-    },
+    // Open the credits menu
     openCreditsMenu() {
       const device = this.currentDevice;
       if (device === "large") {
@@ -131,15 +118,34 @@ export default {
         creditsMenuMobile.style.width = "100%";
       }
     },
-  },
-  mounted() {
-    const deviceWidth = window.innerWidth;
-    if (deviceWidth >= 992) {
-      this.currentDevice = "large";
-    } else {
-      this.currentDevice = "small";
+
+    // Validate the data and call apiRequest()
+    validateData() {
+      var device = this.currentDevice;
+
+      if (device === 'large') {
+        var queryDesktop = this.weatherSearchLocationDesktop;
+        
+        if (queryDesktop === '') {
+          session.setItem('query', undefined)
+          alert('You have to fill in a location!')
+        } else {
+          session.setItem('query', queryDesktop)
+          console.log(queryDesktop);
+        }
+      } else {
+        var queryMobile = this.weatherSearchLocationMobile;
+        if (queryMobile === '') {
+          session.setItem('query', undefined)
+          alert('You have to fill in a location!')
+        } else {
+          session.setItem('query', queryMobile)
+          console.log(queryMobile);
+        }
+      }
     }
   },
   components: { CreditsMenu },
+  props: ['device', 'author']
 };
 </script>
