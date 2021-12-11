@@ -52,23 +52,30 @@
 <script>
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 
+// Initiate sessionStorage
+var session = window.sessionStorage;
+
 export default {
   data() {
     return {
       repositoryURL: "https://github.com/OyewoleOyedeji/weatherme.git",
       surveyURL: "https://mygreatsurveysite.org",
-      currentDevice: "",
-      weatherSearchLocationDesktop: this.$props.query,
-      weatherSearchLocationMobile: this.$props.query,
+      currentDevice: this.$props.device,
+      weatherSearchLocationDesktop: session.getItem('queryDesktop'),
+      weatherSearchLocationMobile: session.getItem('queryMobile'),
     };
   },
   methods: {
+    // Validate the data and recall apiRequest()
+    /** Note: all items stored in the sessionStorage object
+     * have data types of string. Hence the use of == instead of ===
+     */
     refreshWeatherStatistics() {
       const device = this.currentDevice;
       if (device === "large") {
         const searchTerm = this.weatherSearchLocationDesktop;
-        if (searchTerm === "") {
-          alert("Sorry, the location field cannot be empty");
+        if (searchTerm == undefined) {
+          alert("You have to fill in a location!");
         } else {
           const invisibleNavigationMenu = document.getElementById(
             "invisible-navigation-menu"
@@ -81,22 +88,16 @@ export default {
         }
       } else {
         const searchTerm = this.weatherSearchLocationMobile;
-        if (searchTerm === "") {
-          alert("Sorry, the location field cannot be empty");
+        if (searchTerm == undefined) {
+          alert("You have to fill in a location!");
         } else {
           console.log(this.weatherSearchLocationMobile);
         }
       }
     },
   },
-  mounted() {
-    const deviceWidth = window.innerWidth;
-    if (deviceWidth >= 992) {
-      this.currentDevice = "large";
-    } else {
-      this.currentDevice = "small";
-    }
-  },
-  props: ['query']
+  props: {
+    device: String
+  }
 };
 </script>

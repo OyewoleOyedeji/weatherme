@@ -1,5 +1,33 @@
 <template>
-  <div id="dynamic-content">
+  <div id="dynamic-content"></div>
+</template>
+
+<script>
+// Initiate sessionStorage
+var session = window.sessionStorage;
+
+export default {
+  data() {
+    return {
+      requestConfig: {
+        baseURL: 'https://api.weatherapi.com',
+        params: {
+          key: process.env.WEATHER_API_KEY,
+          q: session.getItem(() => {
+            if (session.getItem('queryDesktop') === '' ) {
+              var queryMobile = session.getItem('queryMobile')
+              return queryMobile;
+            } else if (session.getItem('queryMobile' === '')) {
+              var queryDesktop = session.getItem('queryDesktop');
+              return queryDesktop;
+            }
+          })
+        }
+      }
+    };
+  },
+  mounted() {
+    document.querySelector("#dynamic-content").innerHTML = `
     <div class="card shadow" id="glassmorphism-card">
       <div class="card-body">
         <svg
@@ -151,11 +179,7 @@
         <h1 class="text-center pt-3 pb-3 caption">use the searchbox</h1>
       </div>
     </div>
-  </div>
-</template>
-
-<script>
-export default {
-    
-}
+    `;
+  }
+};
 </script>

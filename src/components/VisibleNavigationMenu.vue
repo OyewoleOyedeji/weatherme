@@ -93,6 +93,7 @@
 <script>
 import CreditsMenu from "./CreditsMenu.vue";
 
+// Initiate sessionStorage
 var session = window.sessionStorage;
 
 export default {
@@ -119,7 +120,7 @@ export default {
       }
     },
 
-    // Validate the data and call apiRequest()
+    // Validate the location input data
     validateData() {
       var device = this.currentDevice;
 
@@ -127,25 +128,28 @@ export default {
         var queryDesktop = this.weatherSearchLocationDesktop;
         
         if (queryDesktop === '') {
-          session.setItem('query', undefined)
+          session.setItem('queryDesktop', undefined)
           alert('You have to fill in a location!')
         } else {
-          session.setItem('query', queryDesktop)
+          session.setItem('queryDesktop', queryDesktop)
           console.log(queryDesktop);
         }
       } else {
         var queryMobile = this.weatherSearchLocationMobile;
         if (queryMobile === '') {
-          session.setItem('query', undefined)
+          session.setItem('queryMobile', undefined)
           alert('You have to fill in a location!')
         } else {
-          session.setItem('query', queryMobile)
+          session.setItem('queryMobile', queryMobile)
           console.log(queryMobile);
         }
       }
     }
   },
   components: { CreditsMenu },
-  props: ['device', 'author']
+  props: {
+    device: String,
+    author: String
+  }
 };
 </script>

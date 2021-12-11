@@ -1,6 +1,6 @@
 <template>
   <CurrentStatus />
-  <InvisibleNavigationMenu />
+  <InvisibleNavigationMenu :device="currentDeviceWidth" />
   <VisibleNavigationMenu :device="currentDeviceWidth" :author="author" />
   <MainVue />
 </template>
@@ -35,7 +35,6 @@ export default {
     return {
       currentDeviceWidth: "",
       author: 'Oyewole Oyedeji',
-      searchQuery: ''
     };
   },
   mounted() {
@@ -46,11 +45,6 @@ export default {
     } else {
       this.currentDeviceWidth = "small";
     }
-  },
-  methods: {
-    onSaveSearchQuery(query) {
-      this.searchQuery = query;
-    }
-  },
+  }
 };
 </script>
