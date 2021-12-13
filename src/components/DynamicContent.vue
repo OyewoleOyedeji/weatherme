@@ -5,6 +5,7 @@
 <script>
 // Initiate sessionStorage
 var session = window.sessionStorage;
+require('dotenv').config()
 
 export default {
   data() {

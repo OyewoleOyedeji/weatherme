@@ -1,5 +1,4 @@
 <template>
-  <CreditsMenu :device="currentDevice" :author="projectAuthor" />
   <nav class="container mt-5 d-md-block d-none" id="visible-navigation-menu">
     <div class="row row-cols-1">
       <!-- First half of the visible navigation menu -->
@@ -21,7 +20,7 @@
             placeholder="Enter city, e.g; Abuja"
             class="p-3 ps-3 pt-1 align-middle"
             id="location-search-mobile"
-            v-model="weatherSearchLocationMobile"
+            v-model="weatherSearchLocationTablet"
           />
         </div>
       </div>
@@ -87,69 +86,51 @@
         </div>
       </div>
     </div>
-  </nav>  
+  </nav>
 </template>
 
 <script>
-import CreditsMenu from "./CreditsMenu.vue";
-
-// Initiate sessionStorage
-var session = window.sessionStorage;
-
 export default {
   data() {
     return {
-      currentDevice: this.$props.device,
-      projectAuthor: this.$props.author,
-      weatherSearchLocationDesktop: "",
-      weatherSearchLocationMobile: ""
+      weatherSearchLocationDesktop: null,
+      weatherSearchLocationTablet: null,
     };
   },
   methods: {
     // Open the credits menu
     openCreditsMenu() {
-      const device = this.currentDevice;
-      if (device === "large") {
-        var creditsMenuDesktop = document.getElementById(
-          "credits-menu-desktop"
+      const device = this.$props.device;
+      if (device === "desktop") {
+        var creditsMenuDesktop = document.querySelector(
+          "#credits-menu-desktop"
         );
         creditsMenuDesktop.style.width = "100%";
-      } else {
-        var creditsMenuMobile = document.getElementById("credits-menu-mobile");
+      } else if (device === "tablet") {
+        var creditsMenuMobile = document.querySelector("#credits-menu-mobile");
         creditsMenuMobile.style.width = "100%";
       }
     },
 
     // Validate the location input data
     validateData() {
-      var device = this.currentDevice;
+      var device = this.$props.device;
 
-      if (device === 'large') {
-        var queryDesktop = this.weatherSearchLocationDesktop;
-        
-        if (queryDesktop === '') {
-          session.setItem('queryDesktop', undefined)
-          alert('You have to fill in a location!')
-        } else {
-          session.setItem('queryDesktop', queryDesktop)
-          console.log(queryDesktop);
+      if (device == "desktop") {
+        var queryLarge = this.weatherSearchLocationDesktop;
+        if (queryLarge === null || queryLarge === "") {
+          alert("You have to fill in a location!");
         }
-      } else {
-        var queryMobile = this.weatherSearchLocationMobile;
-        if (queryMobile === '') {
-          session.setItem('queryMobile', undefined)
-          alert('You have to fill in a location!')
-        } else {
-          session.setItem('queryMobile', queryMobile)
-          console.log(queryMobile);
+      } else if (device == "tablet") {
+        var queryTablet = this.weatherSearchLocationTablet;
+        if (queryTablet === null || queryTablet === "") {
+          alert("You have to fill in a location!");
         }
       }
-    }
+    },
   },
-  components: { CreditsMenu },
   props: {
     device: String,
-    author: String
-  }
+  },
 };
 </script>

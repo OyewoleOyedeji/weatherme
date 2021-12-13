@@ -60,44 +60,38 @@ export default {
     return {
       repositoryURL: "https://github.com/OyewoleOyedeji/weatherme.git",
       surveyURL: "https://mygreatsurveysite.org",
-      currentDevice: this.$props.device,
-      weatherSearchLocationDesktop: session.getItem('queryDesktop'),
-      weatherSearchLocationMobile: session.getItem('queryMobile'),
     };
   },
   methods: {
     // Validate the data and recall apiRequest()
-    /** Note: all items stored in the sessionStorage object
-     * have data types of string. Hence the use of == instead of ===
-     */
     refreshWeatherStatistics() {
-      const device = this.currentDevice;
-      if (device === "large") {
-        const searchTerm = this.weatherSearchLocationDesktop;
-        if (searchTerm == undefined) {
+      const device = this.$props.device;
+      if (device === "desktop") {
+        const searchTerm = session.getItem("query");
+        if (searchTerm === "undefined") {
           alert("You have to fill in a location!");
         } else {
-          const invisibleNavigationMenu = document.getElementById(
-            "invisible-navigation-menu"
+          const invisibleNavigationMenu = document.querySelector(
+            "#invisible-navigation-menu"
           );
           const selectModal = bootstrap.Modal.getInstance(
             invisibleNavigationMenu
           );
           selectModal.hide();
-          console.log(this.weatherSearchLocationDesktop);
+          console.log(searchTerm);
         }
-      } else {
-        const searchTerm = this.weatherSearchLocationMobile;
-        if (searchTerm == undefined) {
+      } else if (device === "tablet") {
+        const searchTerm = session.getItem("query");
+        if (searchTerm === "undefined") {
           alert("You have to fill in a location!");
         } else {
-          console.log(this.weatherSearchLocationMobile);
+          console.log(searchTerm);
         }
       }
     },
   },
   props: {
-    device: String
-  }
+    device: String,
+  },
 };
 </script>
