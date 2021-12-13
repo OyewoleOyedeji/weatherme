@@ -1,8 +1,8 @@
 <template>
   <CurrentStatus />
   <CreditsMenu :device="currentDeviceType" :author="author" />
-  <InvisibleNavigationMenu :device="currentDeviceType" />
-  <VisibleNavigationMenu :device="currentDeviceType" />
+  <InvisibleNavigationMenu :device="currentDeviceType" :settings="settings" />
+  <VisibleNavigationMenu :device="currentDeviceType" :settings="settings" />
   <MainVue />
 </template>
 
@@ -39,7 +39,26 @@ export default {
   data() {
     return {
       currentDeviceType: "",
-      author: 'Oyewole Oyedeji',
+      author: "Oyewole Oyedeji",
+      settings: {
+        requestConfig: {
+          baseURL: "https://api.weatherapi.com",
+          params: {
+            key: process.env.VUE_APP_WEATHER_API_KEY,
+            q: () => {
+              var query = session.getItem("query");
+              if (query === "undefined" || query === "") {
+                alert("You have to fill in a location!");
+                return "";
+              } else {
+                return query;
+              }
+            },
+            days: 3,
+          },
+        },
+        targetURL: "/v1/forecast.json",
+      },
     };
   },
   mounted() {
@@ -52,7 +71,7 @@ export default {
     }
 
     // Set the query to empty
-    session.setItem('query', undefined);
-  }
+    session.setItem("query", undefined);
+  },
 };
 </script>

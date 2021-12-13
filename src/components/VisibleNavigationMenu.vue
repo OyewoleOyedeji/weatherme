@@ -11,6 +11,7 @@
             class="p-3 ps-3 pt-1 align-middle"
             id="location-search-desktop"
             v-model="weatherSearchLocationDesktop"
+            @change="updateSession"
           />
         </div>
         <div class="searchbox d-block d-lg-none fixed-bottom container">
@@ -21,6 +22,7 @@
             class="p-3 ps-3 pt-1 align-middle"
             id="location-search-mobile"
             v-model="weatherSearchLocationTablet"
+            @change="updateSession"
           />
         </div>
       </div>
@@ -90,6 +92,9 @@
 </template>
 
 <script>
+// Initiate sessionStorage
+var session = window.sessionStorage;
+
 export default {
   data() {
     return {
@@ -117,20 +122,86 @@ export default {
       var device = this.$props.device;
 
       if (device == "desktop") {
-        var queryLarge = this.weatherSearchLocationDesktop;
-        if (queryLarge === null || queryLarge === "") {
+        // Location input for desktops
+        var queryDesktop = this.weatherSearchLocationDesktop;
+
+        if (queryDesktop === null || queryDesktop === "") {
           alert("You have to fill in a location!");
+        } else {
+          this.requestApi(device);
         }
       } else if (device == "tablet") {
+        this.requestApi(device);
+      }
+    },
+
+    // Request the weather api
+    requestApi(deviceType) {
+      if (deviceType === "desktop") {
+        // Set query in sessionStorage
+        session.setItem("query", this.weatherSearchLocationDesktop);
+
+        // Send out request
+        this.axios
+          .get(this.$props.settings.targetURL, {
+            baseURL: this.$props.settings.requestConfig.baseURL,
+            params: {
+              key: this.$props.settings.requestConfig.params.key,
+              q: this.$props.settings.requestConfig.params.q(),
+              days: this.$props.settings.requestConfig.params.days,
+            },
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (deviceType === "tablet") {
+        // Location input for tablets
         var queryTablet = this.weatherSearchLocationTablet;
+
         if (queryTablet === null || queryTablet === "") {
           alert("You have to fill in a location!");
+        } else {
+          // Set query in sessionStorage
+          session.setItem("query", this.weatherSearchLocationTablet);
+
+          // Send out the request
+          this.axios
+            .get(this.$props.settings.targetURL, {
+              baseURL: this.$props.settings.requestConfig.baseURL,
+              params: {
+                key: this.$props.settings.requestConfig.params.key,
+                q: this.$props.settings.requestConfig.params.q(),
+                days: this.$props.settings.requestConfig.params.days,
+              },
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
+      }
+    },
+
+    updateSession() {
+      const device = this.$props.device;
+
+      if (device === "desktop") {
+        var queryDesktop = this.weatherSearchLocationDesktop;
+        session.setItem("query", queryDesktop);
+      } else if (device === "tablet") {
+        var queryMobile = this.weatherSearchLocationTablet;
+        session.setItem("query", queryMobile);
       }
     },
   },
   props: {
     device: String,
+    settings: Object,
   },
 };
 </script>

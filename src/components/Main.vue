@@ -6,7 +6,8 @@
 
 <script>
 import DynamicContent from "./DynamicContent.vue";
+
 export default {
-    components: { DynamicContent }
-}
+  components: { DynamicContent },
+};
 </script>

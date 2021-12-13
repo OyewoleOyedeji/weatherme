@@ -3,30 +3,7 @@
 </template>
 
 <script>
-// Initiate sessionStorage
-var session = window.sessionStorage;
-require('dotenv').config()
-
 export default {
-  data() {
-    return {
-      requestConfig: {
-        baseURL: 'https://api.weatherapi.com',
-        params: {
-          key: process.env.WEATHER_API_KEY,
-          q: session.getItem(() => {
-            if (session.getItem('queryDesktop') === '' ) {
-              var queryMobile = session.getItem('queryMobile')
-              return queryMobile;
-            } else if (session.getItem('queryMobile' === '')) {
-              var queryDesktop = session.getItem('queryDesktop');
-              return queryDesktop;
-            }
-          })
-        }
-      }
-    };
-  },
   mounted() {
     document.querySelector("#dynamic-content").innerHTML = `
     <div class="card shadow" id="glassmorphism-card">
