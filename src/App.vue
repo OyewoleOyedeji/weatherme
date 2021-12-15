@@ -1,7 +1,7 @@
 <template>
   <CurrentStatus />
   <CreditsMenu :device="currentDeviceType" :author="author" />
-  <InvisibleNavigationMenu :device="currentDeviceType" :settings="settings" />
+  <InvisibleNavigationMenu />
   <VisibleNavigationMenu :device="currentDeviceType" :settings="settings" />
   <MainVue />
 </template>
