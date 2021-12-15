@@ -7,6 +7,7 @@
         class="close-button"
         id="untoggle-navigation-menu-desktop"
         @click="closeCreditsMenu"
+        title="Close credits"
       >
         <i class="bi bi-x"></i>
       </button>
@@ -33,6 +34,7 @@
         class="close-button"
         id="untoggle-navigation-menu-mobile"
         @click="closeCreditsMenu"
+        title="Close credits"
       >
         <i class="bi bi-x"></i>
       </button>
