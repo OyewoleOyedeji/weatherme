@@ -11,6 +11,11 @@
     background: lighten($color, 15%);
     border: 1.5px solid lighten($color, 15%);
   }
+
+  &:focus {
+    background: lighten($color, 15%);
+    border: 1.5px solid lighten($color, 15%);
+  }
 }
 
 // Snippet for styling a credit menu
