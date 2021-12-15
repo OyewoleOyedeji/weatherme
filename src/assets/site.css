@@ -56,6 +56,11 @@ a {
   border: 1.5px solid #f5775f;
 }
 
+.site-buttons:focus {
+  background: #f5775f;
+  border: 1.5px solid #f5775f;
+}
+
 /**== Change the background color of highlighted elements ==**/
 ::-moz-selection {
   background: rgba(166, 166, 166, 0.7);
@@ -165,6 +170,11 @@ a {
 }
 
 #invisible-navigation-menu.modal .modal-dialog .modal-content .modal-body div.menu-group button:hover {
+  background: #f5775f;
+  border: 1.5px solid #f5775f;
+}
+
+#invisible-navigation-menu.modal .modal-dialog .modal-content .modal-body div.menu-group button:focus {
   background: #f5775f;
   border: 1.5px solid #f5775f;
 }
