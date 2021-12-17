@@ -15,7 +15,7 @@
       <!-- Credit text -->
       <div class="centre text-white">
         <h1 class="text-center pt-5">Credits</h1>
-        <h2 class="text-center">Made with ❤ by {{ author }}</h2>
+        <h2 class="text-center">Made with ❤ by {{ this.$store.state.author }}</h2>
         <h3 class="pt-3 text-center">
           <span class="pe-3">Using</span>
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
@@ -42,7 +42,7 @@
       <!-- Credit text -->
       <div class="centre text-white">
         <h1 class="text-center pt-5">Credits</h1>
-        <h2 class="text-center">Made with ❤ by {{ author }}</h2>
+        <h2 class="text-center">Made with ❤ by {{ this.$store.state.author }}</h2>
         <h3 class="pt-3 text-center">
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
           <i class="devicon-css3-plain pe-3" title="CSS3"></i>
@@ -74,7 +74,6 @@ export default {
   },
   props: {
     device: String,
-    author: String,
   },
 };
 </script>

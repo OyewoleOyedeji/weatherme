@@ -9,14 +9,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <span class="badge rounded-pill bg-light text-dark"
-            >More items</span
-          >
+          <span class="badge rounded-pill bg-light text-dark">More items</span>
           <div class="pt-4"></div>
-          <div class="menu-group pb-2 pt-2 mt-1">
+          <div class="menu-group pb-2 pt-2 mt-1" @click="closeModal">
             <a
-              :href="repositoryURL"
-              @click="closeModal"
+              :href="this.$store.state.repositoryURL"
               target="_blank"
               class="text-white pt-3"
             >
@@ -26,10 +23,9 @@
               >
             </a>
           </div>
-          <div class="menu-group pb-2 pt-2">
+          <div class="menu-group pb-2 pt-2" @click="closeModal">
             <a
-              :href="surveyURL"
-              @click="closeModal"
+              :href="this.$store.state.surveyURL"
               target="_blank"
               class="text-white pt-3"
             >
@@ -51,12 +47,6 @@
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 
 export default {
-  data() {
-    return {
-      repositoryURL: "https://github.com/OyewoleOyedeji/weatherme.git",
-      surveyURL: "https://mygreatsurveysite.org",
-    };
-  },
   methods: {
     closeModal() {
       const invisibleNavigationMenu = document.querySelector(
@@ -65,6 +55,6 @@ export default {
       const selectModal = bootstrap.Modal.getInstance(invisibleNavigationMenu);
       selectModal.hide();
     },
-  }
+  },
 };
 </script>
