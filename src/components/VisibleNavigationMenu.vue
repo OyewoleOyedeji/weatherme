@@ -68,6 +68,14 @@
             <button
               type="button"
               class="site-buttons p-3 rounded-circle me-3"
+              title="Click me to find the weather of the entered location"
+              @click="validateData"
+            >
+              <i class="bi bi-search"></i>
+            </button>
+            <button
+              type="button"
+              class="site-buttons p-3 rounded-circle me-3"
               title="Navigation Menu"
               data-bs-toggle="modal"
               data-bs-target="#invisible-navigation-menu"
@@ -100,7 +108,7 @@ export default {
   methods: {
     // Open the credits menu
     openCreditsMenu() {
-      const device = this.$props.device;
+      const device = this.$store.state.device;
       if (device === "desktop") {
         var creditsMenuDesktop = document.querySelector(
           "#credits-menu-desktop"
@@ -114,7 +122,7 @@ export default {
 
     // Validate the input data
     validateData() {
-      var device = this.$props.device;
+      var device = this.$store.state.device;
 
       if (device == "desktop") {
         // Location input for desktops
@@ -140,9 +148,6 @@ export default {
         }
       }
     },
-  },
-  props: {
-    device: String,
   },
 };
 </script>

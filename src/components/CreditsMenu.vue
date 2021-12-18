@@ -15,7 +15,7 @@
       <!-- Credit text -->
       <div class="centre text-white">
         <h1 class="text-center pt-5">Credits</h1>
-        <h2 class="text-center">Made with ❤ by {{ this.$store.state.author }}</h2>
+        <h2 class="text-center">Made with ❤ by {{ author }}</h2>
         <h3 class="pt-3 text-center">
           <span class="pe-3">Using</span>
           <i class="devicon-html5-plain pe-3" title="HTML5"></i>
@@ -56,11 +56,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+  computed: mapState({
+   author: 'author' 
+  }),
   methods: {
     // Close the credits menu
     closeCreditsMenu() {
-      const device = this.$props.device;
+      const device = this.$store.state.device;
       if (device === "desktop") {
         var creditsMenuDesktop = document.querySelector(
           "#credits-menu-desktop"
@@ -71,9 +75,6 @@ export default {
         creditsMenuMobile.style.width = "0%";
       }
     },
-  },
-  props: {
-    device: String,
   },
 };
 </script>

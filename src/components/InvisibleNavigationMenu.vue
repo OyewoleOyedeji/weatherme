@@ -12,11 +12,7 @@
           <span class="badge rounded-pill bg-light text-dark">More items</span>
           <div class="pt-4"></div>
           <div class="menu-group pb-2 pt-2 mt-1" @click="closeModal">
-            <a
-              :href="this.$store.state.repositoryURL"
-              target="_blank"
-              class="text-white pt-3"
-            >
+            <a :href="githubRepo" target="_blank" class="text-white pt-3">
               <i class="bi bi-box align-middle ms-3 menu-icons"></i>
               <span class="me-3 float-end align-middle h4 pb-1"
                 >Contribute to the project</span
@@ -24,11 +20,7 @@
             </a>
           </div>
           <div class="menu-group pb-2 pt-2" @click="closeModal">
-            <a
-              :href="this.$store.state.surveyURL"
-              target="_blank"
-              class="text-white pt-3"
-            >
+            <a :href="surveyUrl" target="_blank" class="text-white pt-3">
               <i
                 class="bi bi-chat-square-dots align-middle ms-3 menu-icons"
               ></i>
@@ -44,6 +36,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 
 export default {
@@ -56,5 +49,9 @@ export default {
       selectModal.hide();
     },
   },
+  computed: mapState({
+    githubRepo: "repositoryURL",
+    surveyUrl: "surveyURL",
+  }),
 };
 </script>

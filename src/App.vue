@@ -1,10 +1,8 @@
 <template>
   <CurrentStatus />
-  <CreditsMenu :device="currentDeviceType" />
+  <CreditsMenu />
   <InvisibleNavigationMenu />
-  <VisibleNavigationMenu
-    :device="currentDeviceType"
-  />
+  <VisibleNavigationMenu />
   <MainVue />
 </template>
 
@@ -28,6 +26,8 @@ import "@/assets/devicon/devicon-base.css";
 // Site styles
 import "@/assets/site.css";
 
+import { mapState } from "vuex";
+
 export default {
   name: "App",
   title: "Weatherme",
@@ -38,17 +38,17 @@ export default {
     InvisibleNavigationMenu,
     MainVue,
   },
-  data() {
-    return {
-      currentDeviceType: "",
-    };
-  },
-  mounted() {
+  computed: mapState({
+    device: "device",
+  }),
+  created() {
     const deviceType = window.innerWidth;
     if (deviceType >= 992) {
-      this.currentDeviceType = "desktop";
-    } else if (deviceType < 992) {
-      this.currentDeviceType = "tablet";
+      this.$store.state.device = "desktop";
+    } else if (deviceType < 992 && deviceType > 375) {
+      this.$store.state.device = "tablet";
+    } else {
+      this.$store.state.device = "mobile";
     }
   },
 };

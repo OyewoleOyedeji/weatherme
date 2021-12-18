@@ -22,18 +22,24 @@ export default createStore({
     request: {
       results: [],
       error: false,
-      _status: 0
-    }
+      _status: undefined
+    },
+    device: undefined
   },
   mutations: {
     setQuery(state, query) {
+      // refers this.state.query
       state.query = query
     },
+
     setOnlinePresenceInitialPageLoad(state, presence) {
+      // refers this.state.online & this.state.initialPageLoad
       state.online = presence
       state.initialPageLoad = false
     },
-    setRequestError(state, {_status, code}) {
+
+    setRequestErrorAndStatus(state, { _status, code }) {
+      // refers this.state.request.error & this.state.request._status
       state.request.error = _status
       state.request._status = code
     }
@@ -60,14 +66,14 @@ export default createStore({
             error: 400,
           }
           context.commit('setOnlinePresenceInitialPageLoad', true);
-          context.commit('setRequestError', payload);
+          context.commit('setRequestErrorAndStatus', payload);
         } else if (statusCode === 403) {
           const payload = {
             _status: statusCode,
             error: 403,
           }
           context.commit('setOnlinePresenceInitialPageLoad', true);
-          context.commit("setRequestError", payload)
+          context.commit("setRequestErrorAndStatus", payload)
         }
       })
     }
