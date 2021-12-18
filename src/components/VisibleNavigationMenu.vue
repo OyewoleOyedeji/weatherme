@@ -123,18 +123,20 @@ export default {
         if (queryDesktop === null || queryDesktop === "") {
           alert("You have to fill in a location!");
         } else {
+          let queryDesktop = this.weatherSearchLocationDesktop;
           this.$store.commit("setQuery", queryDesktop);
-          console.log(this.$store.state.query);
+          this.$store.dispatch("callApi");
         }
       } else if (device == "tablet") {
         // Location input for tablets
-        var queryMobile = this.weatherSearchLocationTablet;
+        let queryMobile = this.weatherSearchLocationTablet;
 
         if (queryMobile === null || queryDesktop === "") {
           alert("You have to fill in a location!");
         } else {
+          let queryMobile = this.weatherSearchLocationTablet;
           this.$store.commit("setQuery", queryMobile);
-          console.log(this.$store.state.query);
+          this.$store.dispatch("callApi");
         }
       }
     },
