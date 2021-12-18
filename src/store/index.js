@@ -22,6 +22,7 @@ export default createStore({
     request: {
       results: [],
       error: false,
+      _status: 0
     }
   },
   mutations: {
@@ -29,11 +30,12 @@ export default createStore({
       state.query = query
     },
     setOnlinePresenceInitialPageLoad(state, presence) {
-      state.online = presence,
-        state.initialPageLoad = false
+      state.online = presence
+      state.initialPageLoad = false
     },
-    setRequestError(state, payload) {
-      state.request.error = payload
+    setRequestError(state, {_status, code}) {
+      state.request.error = _status
+      state.request._status = code
     }
   },
   actions: {
@@ -46,11 +48,27 @@ export default createStore({
           key: context.state.settings.requestConfig.params.key,
         },
       }).then(response => {
-        context.commit("setOnlinePresenceInitialPageLoad", true),
-          console.log(response)
+        context.commit('setOnlinePresenceInitialPageLoad', true);
+        console.log(response);
       }).catch(error => {
-        context.commit("setOnlinePresenceInitialPageLoad", false),
-          console.log(error)
+        const statusCode = error.request.status;
+        if (statusCode === 0) {
+          context.commit('setOnlinePresenceInitialPageLoad', false);
+        } else if (statusCode === 400) {
+          const payload = {
+            _status: statusCode,
+            error: 400,
+          }
+          context.commit('setOnlinePresenceInitialPageLoad', true);
+          context.commit('setRequestError', payload);
+        } else if (statusCode === 403) {
+          const payload = {
+            _status: statusCode,
+            error: 403,
+          }
+          context.commit('setOnlinePresenceInitialPageLoad', true);
+          context.commit("setRequestError", payload)
+        }
       })
     }
   },
