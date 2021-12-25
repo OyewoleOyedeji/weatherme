@@ -31,27 +31,24 @@ export default createStore({
   },
   mutations: {
     setQuery(state, query) {
-      // refers this.state.query
       state.query = query
     },
 
-    setOnlinePresenceInitialPageLoad(state, presence) {
-      // refers this.state.online & this.state.initialPageLoad
-      state.online = presence
+    setOnlinePresenceInitialPageLoad(state, connectivityStatus) {
+      state.online = connectivityStatus
       state.initialPageLoad = false
     },
 
-    setRequestError(state, status) {
-      // refers this.state.request.error & this.state.request._status
-      state.request.error = status
+    setRequestError(state, isValid) {
+      state.request.error = isValid
     },
 
-    setResults(state, processed) {
-      state.request.results = processed
+    setResults(state, results) {
+      state.request.results = results
     },
 
-    setRequestStatus(state, code) {
-      state.request._status = code
+    setStatusCode(state, statusCode) {
+      state.request._status = statusCode
     },
 
     setComments(state, comment) {
@@ -77,7 +74,7 @@ export default createStore({
           console.log(error.response.status)
         } else if (error.request) {
           commit('setRequestError', true);
-          commit('setRequestStatus', 0);
+          commit('setStatusCode', 0);
           commit('setComments', "c'mon your offline")
           commit('setOnlinePresenceInitialPageLoad', false);
         }
@@ -394,7 +391,7 @@ export default createStore({
       };
       commit('setResults', processData);
       commit('setRequestError', false);
-      commit('setRequestStatus', _status);
+      commit('setStatusCode', _status);
       commit('setOnlinePresenceInitialPageLoad', true);
     }
   },
