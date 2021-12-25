@@ -9,6 +9,8 @@ export default createStore({
     repositoryURL: 'https://github.com/OyewoleOyedeji/weatherme.git',
     surveyURL: 'https://somesurveysite.org',
     author: 'Oyewole Oyedeji',
+    device: '',
+    comments: '',
     axios: {
       config: {
         baseURL: "https://api.weatherapi.com",
@@ -22,11 +24,10 @@ export default createStore({
     initialPageLoad: true,
     online: true,
     request: {
-      results: null,
+      results: {},
       error: null,
       _status: null
     },
-    device: undefined
   },
   mutations: {
     setQuery(state, query) {
@@ -49,8 +50,12 @@ export default createStore({
       state.request.results = processed
     },
 
-    setStatus(state, code) {
+    setRequestStatus(state, code) {
       state.request._status = code
+    },
+
+    setComments(state, comment) {
+      state.comments = comment
     }
   },
   actions: {
@@ -63,19 +68,18 @@ export default createStore({
           key: state.axios.config.params.key,
         },
       }).then(response => {
-        commit('setOnlinePresenceInitialPageLoad', true);
-        commit('setRequestError', false)
         dispatch('formatResults', {
-           raw: response.data,
-           _status: response.status 
+          raw: response.data,
+          _status: response.status
         });
       }).catch(error => {
         if (error.response) {
           console.log(error.response.status)
         } else if (error.request) {
-          console.log(error.request.status)
-        } else {
-          console.log(error)
+          commit('setRequestError', true);
+          commit('setRequestStatus', 0);
+          commit('setComments', "c'mon your offline")
+          commit('setOnlinePresenceInitialPageLoad', false);
         }
       })
     },
@@ -389,7 +393,9 @@ export default createStore({
         }
       };
       commit('setResults', processData);
-      commit('setStatus', _status);
+      commit('setRequestError', false);
+      commit('setRequestStatus', _status);
+      commit('setOnlinePresenceInitialPageLoad', true);
     }
   },
   modules: {
