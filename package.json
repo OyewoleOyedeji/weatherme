@@ -6,9 +6,10 @@
     "serve": "vue-cli-service serve --port 4040 --open --copy",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "serve:debug": "vue-devtools"
+    "serve:debug": "echo \"Starting the devtools, please standby ...\" && vue-devtools"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.4.2",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "autoprefixer": "^9",
     "axios": "^0.24.0",
