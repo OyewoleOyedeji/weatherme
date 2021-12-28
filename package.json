@@ -4,14 +4,18 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 4040 --open --copy",
-    "serve:debug": "vue-devtools",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve:debug": "vue-devtools"
   },
   "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^9",
     "axios": "^0.24.0",
     "core-js": "^3.20.0",
+    "postcss": "^7",
     "register-service-worker": "^1.7.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "vue": "^3.0.0",
     "vuex": "^4.0.0-0"
   },
@@ -25,7 +29,8 @@
     "@vue/devtools": "^6.0.0-beta.20",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "vue-cli-plugin-tailwind": "^2.2.18"
   },
   "eslintConfig": {
     "root": true,
