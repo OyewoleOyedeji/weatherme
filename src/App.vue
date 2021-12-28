@@ -1,43 +1,22 @@
 <template>
-  <CurrentStatus />
-  <CreditsMenu />
-  <InvisibleNavigationMenu />
-  <VisibleNavigationMenu />
-  <MainVue />
+  <div class="container">
+    <h1 class="mx-auto">Hello World</h1>
+  </div>
 </template>
 
 <script>
-import VisibleNavigationMenu from "./components/VisibleNavigationMenu.vue";
-import CurrentStatus from "./components/CurrentStatus.vue";
-import InvisibleNavigationMenu from "./components/InvisibleNavigationMenu.vue";
-import MainVue from "./components/Main.vue";
-import CreditsMenu from "./components/CreditsMenu.vue";
-
-// Bootstrap Javascript & CSS
-import "bootstrap/dist/js/bootstrap.bundle";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 // Bootstrap Icons CSS
 import "@/assets/bootstrap-icons/bootstrap-icons.css";
 
 // Devicon CSS
 import "@/assets/devicon/devicon-base.css";
 
-// Site styles
-import "@/assets/site.css";
-
 import { mapState } from "vuex";
 
 export default {
   name: "App",
   title: "Weatherme",
-  components: {
-    VisibleNavigationMenu,
-    CurrentStatus,
-    CreditsMenu,
-    InvisibleNavigationMenu,
-    MainVue,
-  },
+  components: {},
   computed: mapState({
     device: "device",
   }),
