@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="mx-auto">Hello World</h1>
+  <div class="container mx-auto bg-black">
+    <h1 class="line-through text-white">Hello World</h1>
   </div>
 </template>
 
