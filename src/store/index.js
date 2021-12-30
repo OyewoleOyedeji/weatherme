@@ -252,7 +252,8 @@ export default createStore({
               const description = "Patchy sleet possible";
               return description;
             } else if (raw.current.condition.code === 1072) {
-              const description = "Patchy freezing dribble possible";
+              const description =
+                "Patchy freezing dribble possible";
               return description;
             } else if (raw.current.condition.code === 1087) {
               const description = "Thundery outbreaks possible";
@@ -303,7 +304,8 @@ export default createStore({
               const description = "Light freezing rain";
               return description;
             } else if (raw.current.condition.code === 1201) {
-              const description = "Moderate or heavy freezing rain";
+              const description =
+                "Moderate or heavy freezing rain";
               return description;
             } else if (raw.current.condition.code === 1204) {
               const description = "Light sleet";
@@ -345,31 +347,38 @@ export default createStore({
               const description = "Light sleet showers";
               return description;
             } else if (raw.current.condition.code === 1252) {
-              const description = "Moderate or heavy sleet showers";
+              const description =
+                "Moderate or heavy sleet showers";
               return description;
             } else if (raw.current.condition.code === 1255) {
               const description = "Light snow showers";
               return description;
             } else if (raw.current.condition.code === 1258) {
-              const description = "Moderate or heavy snow showers";
+              const description =
+                "Moderate or heavy snow showers";
               return description;
             } else if (raw.current.condition.code === 1261) {
               const description = "Light showers of ice pellets";
               return description;
             } else if (raw.current.condition.code === 1264) {
-              const description = "Moderate or heavy showers of ice pellets";
+              const description =
+                "Moderate or heavy showers of ice pellets";
               return description;
             } else if (raw.current.condition.code === 1273) {
-              const description = "Patchy light rain with thunder";
+              const description =
+                "Patchy light rain with thunder";
               return description;
             } else if (raw.current.condition.code === 1276) {
-              const description = "Moderate or heavy rain with thunder";
+              const description =
+                "Moderate or heavy rain with thunder";
               return description;
             } else if (raw.current.condition.code === 1279) {
-              const description = "Patchy light snow with thunder";
+              const description =
+                "Patchy light snow with thunder";
               return description;
             } else if (raw.current.condition.code === 1282) {
-              const description = "Moderate or heavy snow with thunder";
+              const description =
+                "Moderate or heavy snow with thunder";
               return description;
             }
           },
