@@ -1,51 +1,42 @@
 {
-  "name": "weatherme",
+  "name": "weather",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 4040 --open --copy",
+    "serve": "vue-cli-service serve",
+    "serve:debug": "echo \"Starting the devtools, please standby ...\" && vue-devtools",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "serve:debug": "echo \"Starting the devtools, please standby ...\" && vue-devtools"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.4.2",
-    "axios": "^0.24.0",
-    "core-js": "^3.20.0",
-    "register-service-worker": "^1.7.1",
-    "vue": "^3.0.0",
-    "vuex": "^4.0.0-0"
+    "autoprefixer": "^10",
+    "core-js": "^3.8.3",
+    "postcss": "^8",
+    "register-service-worker": "^1.7.2",
+    "tailwindcss": "^3",
+    "vue": "^3.2.13",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.0-rc.1",
-    "@vue/cli-plugin-eslint": "^5.0.0-rc.1",
-    "@vue/cli-plugin-pwa": "^5.0.0-rc.1",
-    "@vue/cli-plugin-vuex": "^5.0.0-rc.1",
-    "@vue/cli-service": "^5.0.0-rc.1",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/devtools": "^6.0.0-beta.20",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0",
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@headlessui/vue": "^1.4.2",
+    "@vue/cli-plugin-babel": "~5.0.0-rc.1",
+    "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
+    "@vue/cli-plugin-pwa": "~5.0.0-rc.1",
+    "@vue/cli-plugin-vuex": "~5.0.0-rc.1",
+    "@vue/cli-service": "~5.0.0-rc.1",
+    "@vue/devtools": "^6.0.0-beta.21",
+    "axios": "^0.24.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
     "vue-cli-plugin-tailwind": "^3.0.0-beta.0"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  }
 }

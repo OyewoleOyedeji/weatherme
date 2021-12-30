@@ -1,11 +1,4 @@
-module.exports = {
-  pwa: {
-    name: 'Weatherme',
-    themeColor: '#f13819',
-    manifestOptions: {
-      background_color: '#ffffff'
-    }
-  },
-
-  productionSourceMap: false
-}
+const { defineConfig } = require("@vue/cli-service");
+module.exports = defineConfig({
+  transpileDependencies: true,
+});

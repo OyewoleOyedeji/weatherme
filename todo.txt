@@ -1,0 +1,10 @@
+1. Main.vue
+a. Error 400:
+i. comments = "c'mon your location doesn't exist"
+b. Error 403:
+i. comments = "c'mon that's enough for today"
+
+NPM packages
+1. axios
+2. @headlessui/vue
+3. -D @vue/devtools
