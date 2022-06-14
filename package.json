@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve --port 4040 --open --copy",
     "serve:debug": "vue-devtools",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -26,7 +27,8 @@
     "@vue/devtools": "^6.0.0-beta.20",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "husky": "^8.0.0"
   },
   "eslintConfig": {
     "root": true,
